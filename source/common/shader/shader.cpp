@@ -34,19 +34,21 @@ bool our::ShaderProgram::attach(const std::string &filename, GLenum type) const 
     GLuint shaderID = glCreateShader(type);
 
     //TODO: send the source code to the shader and compile it
-    
+    //Done:Ahmed Hussien
+    glCompileShader(shaderID);
     // Here we check for compilation errors
     //TODO: Uncomment this if block
-    // if(std::string error = checkForShaderCompilationErrors(shaderID); error.size() != 0){
-    //     std::cerr << "ERROR IN " << filename << std::endl;
-    //     std::cerr << error << std::endl;
-    //     glDeleteShader(shaderID);
-    //     return false;
-    // }
-
-    
+    //Done:Ahmed Hussien
+    if(std::string error = checkForShaderCompilationErrors(shaderID); error.size() != 0){
+        std::cerr << "ERROR IN " << filename << std::endl;
+        std::cerr << error << std::endl;
+        glDeleteShader(shaderID);
+        return false;
+    }
     //TODO: attach the shader to the program then delete the shader
-
+    //Done:Ahmed Hussien
+    glAttachShader(this->program,shaderID);
+    glDeleteShader(shaderID);
     //We return true since the compilation succeeded
     return true;
 }
@@ -54,15 +56,17 @@ bool our::ShaderProgram::attach(const std::string &filename, GLenum type) const 
 
 
 bool our::ShaderProgram::link() const {
-    //TODO: call opengl to link the program identified by this->program 
-
+    //TODO: call opengl to link the program identified by this->program
+    //Done:Ahmed Husssien
+    glLinkProgram(this->program);
     // Here we check for linking errors
     //TODO: Uncomment this if block
-    // if(auto error = checkForLinkingErrors(program); error.size() != 0){
-    //     std::cerr << "LINKING ERROR" << std::endl;
-    //     std::cerr << error << std::endl;
-    //     return false;
-    // }
+    //Done:Ahmed Hussien
+    if(auto error = checkForLinkingErrors(program); error.size() != 0){
+        std::cerr << "LINKING ERROR" << std::endl;
+        std::cerr << error << std::endl;
+        return false;
+    }
 
     return true;
 }
