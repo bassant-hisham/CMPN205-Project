@@ -25,7 +25,10 @@ build/
 # Screenshots
 screenshots/
 
-#Extra
+#Errors
+errors/
+
+#Static Files and Folders Used for phase testing only
 expected/
 CMPN205 Project - Phase 1 Instructions.pdf
 Instructions.html
@@ -33,3 +36,7 @@ run-all.ps1
 run-all.sh
 vendor/
 config/
+
+#Comparator
+compare.bash
+imgcmp.exe
