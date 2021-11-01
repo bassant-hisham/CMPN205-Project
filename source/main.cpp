@@ -13,7 +13,7 @@ int main(int argc, char** argv) {
     flags::args args(argc, argv); // Parse the command line arguments
     // config_path is the path to the json file containing the application configuration
     // Default: "config/app.json"
-    std::string config_path = args.get<std::string>("c", R"(C:\Users\ahmed\Desktop\University Courses Material\Graphics\CMPN205-Project\config\line01.json)");
+    std::string config_path = args.get<std::string>("c","config/line01.json");
     // run_for_frames is how many frames to run the application before automatically closing
     // This is useful for testing multiple configurations in a batch
     // Default: 0 where the application runs indefinitely until manually closed
@@ -42,6 +42,6 @@ int main(int argc, char** argv) {
     }
 
     // Finally run the application
-    // Here, the application loop will run till the terminatio condition is statisfied
+    // Here, the application loop will run till the terminat condition is statisfied
     return app.run(run_for_frames);
 }
