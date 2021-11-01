@@ -12,7 +12,7 @@ uniform vec4 outside_color = vec4(0.0, 0.0, 0.0, 1.0);
 
 void main(){
     //TODO: Write code that will draw the line
-    if(gl_FragCoord.x <= 256){
+    if((slope*gl_FragCoord.x)+intercept >= gl_FragCoord.y){
         frag_color = inside_color;
     } else {
         frag_color = outside_color;
